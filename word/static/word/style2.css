@@ -1,0 +1,103 @@
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  font-size: 18px;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.jumbotron {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  background-color: #e9ecef;
+  border-radius: 0.3rem;
+}
+
+.form-title {
+	color: #000000;
+	font-weight: bold;
+	font-size: 44px;
+}
+
+.list-group {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+
+
+.form-group table {
+	width: 100%;
+}
+
+.form-group table th {
+	width: 13%;
+}
+
+#tip {
+	margin-top: 15px;
+}
+
+table {
+    margin: 10px;
+    font-size: 20px;
+}
+
+#id_topic-topic {
+    width: 98%;
+    margin: 10px;
+    font-size: 20px;
+}
+
+.panel {
+    margin-bottom: 25px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 0;
+}
+
+.panel-primary {
+    border-color: red;
+}
+
+.panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+}
+
+.panel-body {
+    padding: 15px;
+}
+
+.btn-container {
+	float: right;
+}
+
+.btn {
+  color: #fff;
+  background-color: #275a91;
+  border-color: #275a91;
+  margin: 0px 20px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 18px;
+}

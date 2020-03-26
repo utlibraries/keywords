@@ -1,0 +1,100 @@
+<html lang="en">
+
+    {% load i18n %}
+    <head>
+        <title>Keywords</title>
+    </head>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'word/style.css' %}">
+
+    {% block content %}
+    <div class="jumbotron">
+        <h1 class="form-title">How to Generate Search Terms</h1>
+        <h2>Your Search Terms</h2>
+        <hr>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Below is the list of search terms you have generated. You can use these search terms when researching your topic.</div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <caption class="hidden">Topic summary</caption>
+                <tr>
+                    <td><strong>Topic</strong></td>
+                    <td colspan="{{ data.max_words }}">{{ data.topic }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Key Concepts</strong></td>
+                    {% for concept in data.concepts %}
+                    <td>{{ concept.concept }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td><strong>Related Search Terms</strong></td>
+                {% for concept in data.concepts %}
+                    <td>{% for word in concept.keyconcepts %}{{ word }}<br>{% endfor %}</td>
+                    {% endfor %}
+                </tr>
+                </table>
+            </div>
+        </div>
+        <h2>How to Use Your Search Terms</h2>
+        <hr>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Now that you've created your list of search terms, you will need to combine them using BOOLEAN operators (AND and OR). In your example, the combined search terms would look like this:</div>
+            <div class="panel-body">
+                {% for concept in data.concepts %}
+                <h3>{{concept.concept }} {% for word in concept.keyconcepts %} OR {{ word }}{% endfor %}</h3>
+                {% if not forloop.last %}
+                    <h3>AND</h3>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <h2>Automatically search with your search terms.</h2>
+        <hr>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Click any of the links below to launch a search using these search terms.</div>
+            <div class="panel-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a class="search-link" href="{{ search.catalog }}" target="_blank">Search Everything</a>
+                            |
+                            <a class="search-link" href="{{ search.academic }}" target="_blank">Academic Search Complete</a>
+                            |
+                            <a class="search-link" href="{{ search.jstor }}" target="_blank">JSTOR</a>
+                        </div>
+                    </div>
+                </div>
+                <p class="tip" >Getting too many results when you search? In the Catalog or database, remove some of the search terms you brainstormed for each concept.</p>
+            </div>
+        </div>
+
+        <h2>Email instructions to yourself and/or your instructor.</h2>
+        <hr>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Fill out the form below to send an email.</div>
+            <div class="panel-body">
+                <form class="email-form" method="post">
+                    <table>
+                        <caption class="hidden">Email form</caption>
+                    {% csrf_token %}
+                    {{ email_form }}
+                    </table>
+                    <div class="btn-container">
+                        <div class="form-actions">
+                        <button class="btn btn-primary" type="submit">Send</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="start-over">
+            <p class="tip">Ready to generate search terms for a new search?</p>
+            <a class="btn btn-default" type="button" href="/keywords">Start Over</a>
+        </div>
+    </div>
+    {% endblock %}
+</html>

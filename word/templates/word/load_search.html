@@ -1,0 +1,22 @@
+{% load i18n %}
+
+
+{% block head %}
+{{ wizard.form.media }}
+{% endblock %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'word/style.css' %}">
+
+{% block content %}
+<form action="" method="post">{% csrf_token %}
+    <h1>Loading search results...</h1>
+    <div class="loader"></div>
+    <a href = "{{ search_link }}" id="search_link" style="display:none"> test </a>
+</form>
+<script>
+    window.onload = function redirect(){
+        document.getElementById("search_link").click();
+    }
+</script>
+{% endblock %}
